@@ -2,31 +2,29 @@
 
 declare(strict_types=1);
 
-namespace Crurated\ApiUseCaseManagement;
+namespace GiacomoMasseroni\LaravelCacheWhenDb;
 
-use GiacomoMasseroni\LaravelCacheWhenDb\LaravelCacheWhenDb;
+use Illuminate\Database\Events\QueryExecuted;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 
 class LaravelCacheWhenDbServiceProvider extends ServiceProvider
 {
-    public function register()
+    public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'laravel-cache-when-db');
+        $this->mergeConfigFrom(__DIR__.'/../config/laravel-cache-when-db.php', 'laravel-cache-when-db');
     }
 
-    public function boot()
+    public function boot(): void
     {
-        if ($this->app->runningInConsole()) {
-            $this->publishes([
-                __DIR__.'/../config/config.php' => config_path('laravel-cache-when-db'),
-            ]);
+        $this->publishes([
+            __DIR__.'/../config/laravel-cache-when-db.php' => config_path('laravel-cache-when-db.php'),
+        ]);
 
-            DB::listen(function ($query): void {
-                if (LaravelCacheWhenDb::queryChangedDatabase($query->sql)) {
-                    LaravelCacheWhenDb::clearCache($query->sql);
-                }
-            });
-        }
+        DB::listen(function (QueryExecuted $query): void {
+            if (LaravelCacheWhenDb::queryChangedDatabase($query->sql)) {
+                LaravelCacheWhenDb::cleanCache($query->sql);
+            }
+        });
     }
 }

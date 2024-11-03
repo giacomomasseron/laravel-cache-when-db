@@ -7,7 +7,7 @@
         "laravel-cache-when-db",
         "eloquent"
     ],
-    "homepage": "https://github.com/giacomomasseron/laravel-models-generator",
+    "homepage": "https://github.com/giacomomasseron/laravel-cache-when-db",
     "license": "MIT",
     "authors": [
         {
@@ -34,7 +34,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "LaravelCacheWhenDbServiceProvider"
+                "GiacomoMasseroni\\LaravelCacheWhenDb\\LaravelCacheWhenDbServiceProvider"
             ]
         }
     },

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace GiacomoMasseroni\LaravelCacheWhenDb;
 
 use Illuminate\Support\Facades\Cache;
@@ -13,8 +15,12 @@ class LaravelCacheWhenDb
         return str_starts_with($sql, 'INSERT') || str_starts_with($sql, 'UPDATE') || str_starts_with($sql, 'DELETE');
     }
 
-    public static function clearCache(string $sql): void
+    public static function cleanCache(string $sql): void
     {
+        /**
+         * @var string $key
+         * @var array<string> $dbTables
+         */
         foreach (config('laravel-cache-when-db', []) as $key => $dbTables) {
             $clean = false;
 

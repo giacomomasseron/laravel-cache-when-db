@@ -5,6 +5,8 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/giacomomasseron/laravel-cache-when-db/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/giacomomasseron/laravel-cache-when-db/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/giacomomasseron/laravel-cache-when-db.svg?style=flat-square)](https://packagist.org/packages/giacomomasseron/laravel-cache-when-db)
 
+Clean cache keys when you insert, update or delete some records of your database.
+
 ## Installation
 
 You can install the package via composer:
@@ -16,7 +18,7 @@ composer require giacomomasseron/laravel-cache-when-db
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="laravel-cache-when-db-config"
+php artisan vendor:publish --tag="laravel-cache-when-db"
 ```
 
 This is the contents of the published config file:
@@ -24,7 +26,7 @@ This is the contents of the published config file:
 ```php
 return [
     /**
-     * Define Cache keys to clean when something happens in the database
+     * Define Cache keys to clean when one the tables of the array is updated
      *
      * [
      *      'cache_key' => [
