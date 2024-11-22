@@ -24,7 +24,8 @@
         "phpunit/phpunit": "^10.1",
         "larastan/larastan": "^3.0",
         "laravel/pint": "^1.14",
-        "orchestra/testbench": "^9.0.0||^8.22.0"
+        "orchestra/testbench": "^9.0.0||^8.22.0",
+        "pestphp/pest": "^2.36"
     },
     "autoload": {
         "psr-4": {
@@ -66,5 +67,10 @@
             "@test:types",
             "@test:unit"
         ]
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
     }
 }
