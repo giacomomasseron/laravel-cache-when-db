@@ -21,7 +21,7 @@ class LaravelCacheWhenDb
          * @var string $key
          * @var array<string> $dbTables
          */
-        foreach (config('laravel-cache-when-db', []) as $key => $dbTables) {
+        foreach ((array)config('laravel-cache-when-db', []) as $key => $dbTables) {
             $clean = false;
 
             foreach ($dbTables as $dbTable) {
