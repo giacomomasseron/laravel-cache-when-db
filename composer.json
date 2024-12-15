@@ -21,11 +21,12 @@
         "illuminate/contracts": "^10.0||^11.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^10.1",
-        "larastan/larastan": "^3.0",
         "laravel/pint": "^1.14",
         "orchestra/testbench": "^9.0.0||^8.22.0",
-        "pestphp/pest": "^2.36"
+        "rector/rector": "^2.0",
+        "pestphp/pest": "^3.7",
+        "pestphp/pest-plugin-type-coverage": "^3.2",
+        "larastan/larastan": "^3.0"
     },
     "autoload": {
         "psr-4": {
@@ -56,6 +57,7 @@
         "test:lint": "pint --test",
         "test:refactor": "rector --dry-run",
         "test:types": "phpstan analyse",
+        "test:type-coverage": "pest --type-coverage --min=100",
         "test:unit": "@php vendor/bin/phpunit",
         "serve": [
             "@build",
