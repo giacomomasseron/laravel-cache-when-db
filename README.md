@@ -24,18 +24,19 @@ php artisan vendor:publish --tag="laravel-cache-when-db"
 This is the contents of the published config file:
 
 ```php
-return [
-    /**
-     * Define Cache keys to clean when one the tables of the array is updated
-     *
-     * [
-     *      'cache_key' => [
-     *          'database_table',
-     *          'database_table',
-     *      ],
-     * ]
-     */
-];
+    /*
+    |--------------------------------------------------------------------------
+    | Cache keys
+    |--------------------------------------------------------------------------
+    |
+    | Define Cache keys to clean when one of the tables of the array changes
+    | [
+    |      'cache_key' => [
+    |          'database_table',
+    |          'database_table',
+    |      ],
+    |
+    */
 ```
 
 ## Testing
